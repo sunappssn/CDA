@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Droits & Devoirs | CDA</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #173b29;
+    }
+
+    /* HEADER */
+    header {
+      height: 78px;
+      background: #ffffff;
+      border-bottom: 1px solid #e5eee8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #07883f;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .logo-text strong {
+      display: block;
+      color: #07883f;
+      font-size: 20px;
+    }
+
+    .logo-text span {
+      font-size: 10px;
+      color: #68776e;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #254333;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #07883f;
+    }
+
+    .menu-button {
+      display: none;
+      font-size: 28px;
+      color: #07883f;
+      cursor: pointer;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: #f1faf4;
+      padding: 80px 7%;
+      text-align: center;
+    }
+
+    .label {
+      display: inline-block;
+      background: #dff4e7;
+      color: #07883f;
+      padding: 9px 17px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .page-header h1 {
+      color: #075d30;
+      font-size: 48px;
+      margin-bottom: 18px;
+    }
+
+    .page-header p {
+      max-width: 750px;
+      margin: auto;
+      color: #617067;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 80px 25px;
+    }
+
+    /* INTRO */
+    .intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 65px;
+    }
+
+    .intro h2 {
+      color: #075d30;
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .intro p {
+      color: #65736b;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* RIGHTS / DUTIES */
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .big-card {
+      border-radius: 22px;
+      padding: 35px;
+      border: 1px solid #e2eee6;
+      background: white;
+    }
+
+    .big-card.rights {
+      border-top: 6px solid #07883f;
+    }
+
+    .big-card.duties {
+      border-top: 6px solid #075d30;
+    }
+
+    .big-card-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .big-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 15px;
+      background: #e1f5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .big-card h2 {
+      color: #075d30;
+      font-size: 27px;
+    }
+
+    .big-card ul {
+      list-style: none;
+    }
+
+    .big-card li {
+      padding: 15px 0;
+      border-bottom: 1px solid #edf3ef;
+      color: #5f6e65;
+      line-height: 1.5;
+    }
+
+    .big-card li:last-child {
+      border-bottom: none;
+    }
+
+    .big-card li::before {
+      content: "✓";
+      color: #07883f;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* TOPICS */
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      color: #075d30;
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #68756d;
+    }
+
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-bottom: 80px;
+    }
+
+    .topic {
+      border: 1px solid #e2eee6;
+      border-radius: 18px;
+      padding: 28px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .topic:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.07);
+    }
+
+    .topic-icon {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .topic h3 {
+      color: #075d30;
+      margin-bottom: 10px;
+    }
+
+    .topic p {
+      color: #68756d;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* MESSAGE */
+    .message {
+      background: #07883f;
+      color: white;
+      border-radius: 25px;
+      padding: 55px 35px;
+      text-align: center;
+    }
+
+    .message h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .message p {
+      max-width: 750px;
+      margin: auto;
+      color: #e7f8ed;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .message a {
+      display: inline-block;
+      background: white;
+      color: #07883f;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 13px 24px;
+      border-radius: 8px;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 80px;
+      background: #064d29;
+      color: white;
+      padding: 40px 7% 25px;
+      text-align: center;
+    }
+
+    footer h3 {
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      color: #d5ecdd;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 25px;
+      padding-top: 20px;
+      color: #c9e4d2;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px 7%;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .two-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .topics {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header h1 {
+        font-size: 38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <a href="index.html" class="logo">
+
+    <div class="logo-circle">
+      CDA
+    </div>
+
+    <div class="logo-text">
+      <strong>CDA</strong>
+      <span>Conseil de Développement des Adolescents</span>
+    </div>
+
+  </a>
+
+  <nav id="menu">
+
+    <a href="index.html">Accueil</a>
+
+    <a href="cda.html">Le CDA</a>
+
+    <a href="droits.html" class="active">
+      Droits & Devoirs
+    </a>
+
+    <a href="activites.html">Activités</a>
+
+    <a href="quiz.html">Quiz</a>
+
+    <a href="recherche.html">Recherche</a>
+
+    <a href="apropos.html">À propos</a>
+
+  </nav>
+
+  <div class="menu-button" onclick="toggleMenu()">
+    ☰
+  </div>
+
+</header>
+
+
+<!-- PAGE HEADER -->
+
+<section class="page-header">
+
+  <div class="label">
+    DROITS & RESPONSABILITÉS
+  </div>
+
+  <h1>
+    Mes droits, mes devoirs
+  </h1>
+
+  <p>
+    Comprendre ses droits et ses responsabilités permet
+    à chaque adolescent de mieux participer à la vie
+    de sa communauté.
+  </p>
+
+</section>
+
+
+<main class="container">
+
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <h2>
+      Connaître ses droits et ses responsabilités
+    </h2>
+
+    <p>
+      Les adolescents ont des droits qui doivent être
+      respectés et des responsabilités qui contribuent
+      au respect des autres et à la vie collective.
+    </p>
+
+  </section>
+
+
+  <!-- RIGHTS / DUTIES -->
+
+  <section class="two-columns">
+
+
+    <!-- DROITS -->
+
+    <div class="big-card rights">
+
+      <div class="big-card-header">
+
+        <div class="big-icon">
+          ⚖️
+        </div>
+
+        <h2>
+          Les droits
+        </h2>
+
+      </div>
+
+      <ul>
+
+        <li>
+          Droit à l'éducation
+        </li>
+
+        <li>
+          Droit à la santé
+        </li>
+
+        <li>
+          Droit à la protection
+        </li>
+
+        <li>
+          Droit à l'identité
+        </li>
+
+        <li>
+          Droit à l'expression
+        </li>
+
+        <li>
+          Droit d'être écouté
+        </li>
+
+        <li>
+          Droit au repos et aux loisirs
+        </li>
+
+        <li>
+          Droit à un environnement sain
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- DEVOIRS -->
+
+    <div class="big-card duties">
+
+      <div class="big-card-header">
+
+        <div class="big-icon">
+          🤝
+        </div>
+
+        <h2>
+          Les devoirs
+        </h2>
+
+      </div>
+
+      <ul>
+
+        <li>
+          Respecter les autres
+        </li>
+
+        <li>
+          Respecter ses parents et les adultes
+        </li>
+
+        <li>
+          Respecter les règles de la communauté
+        </li>
+
+        <li>
+          Prendre soin de son environnement
+        </li>
+
+        <li>
+          Respecter les biens des autres
+        </li>
+
+        <li>
+          Participer positivement à la communauté
+        </li>
+
+        <li>
+          Être responsable de ses actions
+        </li>
+
+        <li>
+          Favoriser la paix et la solidarité
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <!-- DOMAINES -->
+
+  <div class="section-title">
+
+    <h2>
+      Les domaines importants
+    </h2>
+
+    <p>
+      Explore différents sujets liés aux droits et responsabilités.
+    </p>
+
+  </div>
+
+
+  <section class="topics">
+
+
+    <div class="topic">
+
+      <div class="topic-icon">
+        📚
+      </div>
+
+      <h3>
+        Éducation
+      </h3>
+
+      <p>
+        L'éducation permet aux adolescents d'acquérir
+        des connaissances et de développer leurs capacités.
+      </p>
+
+    </div>
+
+
+    <div class="topic">
+
+      <div class="topic-icon">
+        🛡️
+      </div>
+
+      <h3>
+        Protection
+      </h3>
+
+      <p>
+        Chaque adolescent doit pouvoir grandir dans
+        un environnement sûr et respectueux.
+      </p>
+
+    </div>
+
+
+    <div class="topic">
+
+      <div class="topic-icon">
+        🗣️
+      </div>
+
+      <h3>
+        Expression
+      </h3>
+
+      <p>
+        Les adolescents doivent pouvoir exprimer leurs
+        idées et être écoutés sur les sujets qui les concernent.
+      </p>
+
+    </div>
+
+
+    <div class="topic">
+
+      <div class="topic-icon">
+        🌳
+      </div>
+
+      <h3>
+        Environnement
+      </h3>
+
+      <p>
+        Protéger la nature et garder son cadre de vie propre
+        est une responsabilité collective.
+      </p>
+
+    </div>
+
+
+    <div class="topic">
+
+      <div class="topic-icon">
+        🕊️
+      </div>
+
+      <h3>
+        Paix
+      </h3>
+
+      <p>
+        Le respect, le dialogue et la solidarité contribuent
+        à construire une communauté pacifique.
+      </p>
+
+    </div>
+
+
+    <div class="topic">
+
+      <div class="topic-icon">
+        👥
+      </div>
+
+      <h3>
+        Citoyenneté
+      </h3>
+
+      <p>
+        Participer à la vie de sa communauté permet
+        aux adolescents de contribuer positivement à la société.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MESSAGE -->
+
+  <section class="message">
+
+    <h2>
+      Connais tes droits. Comprends tes responsabilités.
+    </h2>
+
+    <p>
+      Le CDA encourage chaque adolescent à s'informer,
+      à respecter les autres et à participer positivement
+      au développement de sa communauté.
+    </p>
+
+    <a href="quiz.html">
+      Tester mes connaissances
+    </a>
+
+  </section>
+
+
+</main>
+
+
+<footer>
+
+  <h3>CDA</h3>
+
+  <p>
+    Conseil de Développement des Adolescents
+  </p>
+
+  <p>
+    Ensemble pour une jeunesse engagée.
+  </p>
+
+  <div class="copyright">
+    © 2026 CDA — Tous droits réservés.
+  </div>
+
+</footer>
+
+
+<script>
+
+  function toggleMenu() {
+
+    const menu = document.getElementById("menu");
+
+    menu.classList.toggle("active");
+
+  }
+
+</script>
+
+</body>
+</html>
