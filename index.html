@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CDA - Conseil de Développement des Adolescents</title>
+  <title>CDA | Conseil de Développement des Adolescents</title>
 
   <style>
     * {
@@ -16,18 +16,22 @@
 
     body {
       background: #ffffff;
-      color: #183b2a;
+      color: #173b29;
     }
 
-    /* HEADER */
+    /* ================= HEADER ================= */
+
     header {
+      width: 100%;
+      height: 78px;
       background: #ffffff;
-      height: 75px;
+      border-bottom: 1px solid #e5eee8;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       padding: 0 6%;
-      border-bottom: 1px solid #e5eee8;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -37,174 +41,261 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: bold;
-      color: #087f3f;
-      font-size: 22px;
+      text-decoration: none;
     }
 
-    .logo-icon {
-      width: 45px;
-      height: 45px;
+    .logo-circle {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: #087f3f;
+
+      background: #07883f;
       color: white;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+
       font-weight: bold;
+      font-size: 15px;
     }
+
+    .logo-text strong {
+      display: block;
+      color: #07883f;
+      font-size: 20px;
+    }
+
+    .logo-text span {
+      font-size: 11px;
+      color: #68776e;
+    }
+
+    /* ================= MENU ================= */
 
     nav {
       display: flex;
-      gap: 28px;
+      align-items: center;
+      gap: 30px;
     }
 
     nav a {
       text-decoration: none;
-      color: #183b2a;
+      color: #254333;
+      font-size: 15px;
       font-weight: 600;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #087f3f;
+      color: #07883f;
     }
 
-    .menu {
+    .login-btn {
+      background: #07883f;
+      color: white !important;
+
+      padding: 11px 20px;
+      border-radius: 8px;
+    }
+
+    .login-btn:hover {
+      background: #056b31;
+    }
+
+    .menu-button {
       display: none;
       font-size: 28px;
-      color: #087f3f;
+      color: #07883f;
       cursor: pointer;
     }
 
-    /* HERO */
+    /* ================= HERO ================= */
+
     .hero {
       min-height: 620px;
+
       display: flex;
       align-items: center;
+      justify-content: space-between;
+
       padding: 70px 7%;
-      background: linear-gradient(135deg, #f2fbf5, #ffffff);
+
+      background:
+        linear-gradient(
+          120deg,
+          #f1faf4,
+          #ffffff
+        );
     }
 
-    .hero-content {
+    .hero-left {
       width: 55%;
     }
 
-    .badge {
+    .small-title {
       display: inline-block;
-      background: #dff4e7;
-      color: #087f3f;
-      padding: 10px 18px;
+
+      background: #e2f5e9;
+      color: #07883f;
+
+      padding: 9px 16px;
       border-radius: 30px;
+
+      font-size: 13px;
       font-weight: bold;
-      margin-bottom: 20px;
+
+      margin-bottom: 22px;
     }
 
     .hero h1 {
-      font-size: 58px;
-      line-height: 1.1;
-      color: #075d30;
-      margin-bottom: 20px;
+      font-size: 56px;
+      line-height: 1.08;
+
+      color: #0b5d32;
+
+      margin-bottom: 22px;
     }
 
     .hero h1 span {
-      color: #087f3f;
+      color: #07883f;
     }
 
-    .hero p {
-      font-size: 20px;
-      line-height: 1.7;
-      color: #52665a;
+    .hero-description {
       max-width: 650px;
+
+      color: #617067;
+      font-size: 18px;
+      line-height: 1.7;
+
       margin-bottom: 30px;
     }
 
-    .buttons {
+    .hero-buttons {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
     }
 
-    .btn-primary,
-    .btn-secondary {
-      padding: 15px 25px;
-      border-radius: 10px;
+    .btn {
       text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 9px;
       font-weight: bold;
       display: inline-block;
     }
 
-    .btn-primary {
-      background: #087f3f;
+    .btn-green {
+      background: #07883f;
       color: white;
     }
 
-    .btn-primary:hover {
-      background: #075d30;
+    .btn-green:hover {
+      background: #056b31;
     }
 
-    .btn-secondary {
-      border: 2px solid #087f3f;
-      color: #087f3f;
+    .btn-white {
       background: white;
+      color: #07883f;
+      border: 1px solid #07883f;
     }
 
-    .btn-secondary:hover {
+    .btn-white:hover {
       background: #f0faf4;
     }
 
-    /* HERO CARD */
-    .hero-card {
-      width: 40%;
-      min-height: 390px;
-      background: #087f3f;
-      border-radius: 30px;
-      padding: 35px;
+    /* ================= HERO RIGHT ================= */
+
+    .hero-right {
+      width: 38%;
+      min-height: 410px;
+
+      border-radius: 25px;
+
+      background: #07883f;
+
+      padding: 40px;
+
       color: white;
-      box-shadow: 0 20px 50px rgba(8, 127, 63, 0.2);
+
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      box-shadow: 0 20px 45px rgba(7, 136, 63, 0.20);
     }
 
-    .hero-card .big-icon {
-      font-size: 75px;
-      margin-bottom: 20px;
+    .hero-icon {
+      font-size: 65px;
+      margin-bottom: 25px;
     }
 
-    .hero-card h2 {
+    .hero-right h2 {
       font-size: 30px;
       margin-bottom: 15px;
     }
 
-    .hero-card p {
-      color: #e9fff1;
-      font-size: 17px;
-      line-height: 1.6;
+    .hero-right p {
+      color: #e7f8ed;
+      line-height: 1.7;
+      font-size: 16px;
     }
 
-    /* SECTIONS */
-    section {
-      padding: 80px 7%;
+    /* ================= STATISTIQUES ================= */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+
+      padding: 35px 7%;
+
+      background: white;
     }
 
-    .section-title {
+    .stat {
       text-align: center;
-      margin-bottom: 50px;
+      padding: 20px;
     }
 
-    .section-title h2 {
+    .stat strong {
+      display: block;
+      color: #07883f;
+      font-size: 30px;
+      margin-bottom: 7px;
+    }
+
+    .stat span {
+      color: #69766e;
+      font-size: 14px;
+    }
+
+    /* ================= SECTION ================= */
+
+    .section {
+      padding: 85px 7%;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: auto auto 50px;
+    }
+
+    .section-header h2 {
+      color: #0b5d32;
       font-size: 38px;
-      color: #075d30;
       margin-bottom: 12px;
     }
 
-    .section-title p {
-      color: #66756b;
-      font-size: 17px;
+    .section-header p {
+      color: #68756d;
+      line-height: 1.6;
     }
 
-    /* CARDS */
+    /* ================= CARDS ================= */
+
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -212,114 +303,174 @@
     }
 
     .card {
-      background: white;
       border: 1px solid #e2eee6;
-      border-radius: 20px;
+      border-radius: 18px;
       padding: 30px;
+
+      background: white;
+
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.07);
     }
 
     .card-icon {
       width: 55px;
       height: 55px;
-      background: #e0f5e8;
-      border-radius: 15px;
+
+      background: #e1f5e9;
+
+      border-radius: 14px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 27px;
+
+      font-size: 26px;
+
       margin-bottom: 20px;
     }
 
     .card h3 {
-      color: #075d30;
+      color: #0b5d32;
       margin-bottom: 12px;
-      font-size: 21px;
     }
 
     .card p {
-      color: #66756b;
+      color: #69776e;
       line-height: 1.6;
     }
 
-    /* ABOUT */
-    .about {
-      background: #f3faf5;
-    }
+    /* ================= CTA ================= */
 
-    .about-content {
-      max-width: 850px;
-      margin: auto;
-      text-align: center;
-    }
+    .cta {
+      margin: 20px 7% 80px;
 
-    .about-content p {
-      font-size: 18px;
-      line-height: 1.8;
-      color: #52665a;
-    }
+      padding: 55px;
 
-    /* FOOTER */
-    footer {
-      background: #075d30;
+      border-radius: 25px;
+
+      background: #07883f;
+
       color: white;
+
       text-align: center;
-      padding: 35px 20px;
+    }
+
+    .cta h2 {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #e6f8ed;
+      margin-bottom: 25px;
+    }
+
+    .cta a {
+      display: inline-block;
+
+      background: white;
+      color: #07883f;
+
+      padding: 13px 25px;
+
+      border-radius: 8px;
+
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #064d29;
+      color: white;
+
+      padding: 45px 7% 25px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+
+      margin-bottom: 35px;
     }
 
     footer h3 {
-      font-size: 25px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
-    footer p {
-      color: #d9f3e2;
-      line-height: 1.6;
-    }
-
-    .copyright {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.2);
+    footer p,
+    footer a {
+      color: #d5ecdd;
+      line-height: 1.7;
       font-size: 14px;
     }
 
-    /* MOBILE */
-    @media (max-width: 850px) {
+    footer a {
+      display: block;
+      text-decoration: none;
+      margin-bottom: 7px;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 20px;
+
+      text-align: center;
+
+      color: #c9e4d2;
+      font-size: 13px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 900px) {
 
       nav {
         display: none;
+
         position: absolute;
-        top: 75px;
+
+        top: 78px;
         left: 0;
+
         width: 100%;
+
         background: white;
+
         flex-direction: column;
-        padding: 25px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        align-items: flex-start;
+
+        padding: 25px 7%;
+
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
       }
 
       nav.active {
         display: flex;
       }
 
-      .menu {
+      .menu-button {
         display: block;
       }
 
       .hero {
         flex-direction: column;
         gap: 40px;
-        padding-top: 50px;
       }
 
-      .hero-content,
-      .hero-card {
+      .hero-left,
+      .hero-right {
         width: 100%;
       }
 
@@ -330,82 +481,119 @@
       .cards {
         grid-template-columns: 1fr;
       }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+  <!-- ================= HEADER ================= -->
+
   <header>
 
-    <div class="logo">
-      <div class="logo-icon">CDA</div>
-      <span>CDA</span>
-    </div>
+    <a href="index.html" class="logo">
 
-    <nav id="navigation">
-      <a href="#accueil">Accueil</a>
-      <a href="#cda">Le CDA</a>
-      <a href="#droits">Droits & Devoirs</a>
-      <a href="#activites">Activités</a>
-      <a href="#quiz">Quiz</a>
-      <a href="#apropos">À propos</a>
+      <div class="logo-circle">
+        CDA
+      </div>
+
+      <div class="logo-text">
+        <strong>CDA</strong>
+        <span>Conseil de Développement des Adolescents</span>
+      </div>
+
+    </a>
+
+
+    <nav id="menu">
+
+      <a href="index.html">Accueil</a>
+
+      <a href="cda.html">Le CDA</a>
+
+      <a href="droits.html">Droits & Devoirs</a>
+
+      <a href="activites.html">Activités</a>
+
+      <a href="quiz.html">Quiz</a>
+
+      <a href="recherche.html">Recherche</a>
+
+      <a href="apropos.html">À propos</a>
+
+      <a href="#" class="login-btn">Connexion</a>
+
     </nav>
 
-    <div class="menu" onclick="toggleMenu()">☰</div>
+
+    <div class="menu-button" onclick="toggleMenu()">
+      ☰
+    </div>
 
   </header>
 
 
-  <!-- ACCUEIL -->
-  <main id="accueil">
+  <!-- ================= ACCUEIL ================= -->
+
+  <main>
 
     <section class="hero">
 
-      <div class="hero-content">
+      <div class="hero-left">
 
-        <div class="badge">
-          🌱 Conseil de Développement des Adolescents
+        <div class="small-title">
+          🌱 CONSEIL DE DÉVELOPPEMENT DES ADOLESCENTS
         </div>
 
         <h1>
-          La voix des <span>adolescents</span>,
-          pour construire demain.
+          La voix des <span>adolescents</span>
+          pour construire l'avenir.
         </h1>
 
-        <p>
-          Bienvenue sur la plateforme du CDA.
-          Un espace dédié aux adolescents pour apprendre,
-          s'exprimer, participer et contribuer au développement
+        <p class="hero-description">
+          Bienvenue sur la plateforme officielle du CDA.
+          Un espace conçu pour informer, accompagner et encourager
+          les adolescents à participer activement au développement
           de leur communauté.
         </p>
 
-        <div class="buttons">
-          <a href="#cda" class="btn-primary">
+        <div class="hero-buttons">
+
+          <a href="cda.html" class="btn btn-green">
             Découvrir le CDA
           </a>
 
-          <a href="#quiz" class="btn-secondary">
-            Participer
+          <a href="droits.html" class="btn btn-white">
+            Découvrir mes droits
           </a>
+
         </div>
 
       </div>
 
 
-      <div class="hero-card">
+      <div class="hero-right">
 
-        <div class="big-icon">👥</div>
+        <div class="hero-icon">
+          👥
+        </div>
 
         <h2>
           Ensemble pour la jeunesse
         </h2>
 
         <p>
-          Le CDA encourage les adolescents à prendre la parole,
-          développer leurs compétences et participer activement
-          à la vie de leur communauté.
+          Le CDA offre aux adolescents un espace pour apprendre,
+          partager leurs idées, développer leurs compétences
+          et participer à des actions positives.
         </p>
 
       </div>
@@ -413,15 +601,60 @@
     </section>
 
 
-    <!-- LE CDA -->
-    <section id="cda">
+    <!-- ================= STATISTIQUES ================= -->
 
-      <div class="section-title">
+    <section class="stats">
 
-        <h2>Le Conseil de Développement des Adolescents</h2>
+      <div class="stat">
+
+        <strong>01</strong>
+
+        <span>
+          Un espace pour les adolescents
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>06+</strong>
+
+        <span>
+          Domaines d'information
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>∞</strong>
+
+        <span>
+          Idées pour construire demain
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= POURQUOI CDA ================= -->
+
+    <section class="section">
+
+      <div class="section-header">
+
+        <h2>
+          Pourquoi le CDA ?
+        </h2>
 
         <p>
-          Un espace d'information, de participation et de développement.
+          Le CDA permet aux adolescents de disposer
+          d'informations et d'outils pour mieux comprendre
+          leurs droits, leurs responsabilités et leur rôle
+          dans la société.
         </p>
 
       </div>
@@ -431,13 +664,17 @@
 
         <div class="card">
 
-          <div class="card-icon">🎯</div>
+          <div class="card-icon">
+            📚
+          </div>
 
-          <h3>Notre mission</h3>
+          <h3>
+            S'informer
+          </h3>
 
           <p>
-            Donner aux adolescents un espace où ils peuvent
-            apprendre, s'exprimer et participer.
+            Accéder à des contenus simples et utiles
+            sur les droits, les devoirs et la citoyenneté.
           </p>
 
         </div>
@@ -445,13 +682,17 @@
 
         <div class="card">
 
-          <div class="card-icon">💡</div>
+          <div class="card-icon">
+            💡
+          </div>
 
-          <h3>Nos idées</h3>
+          <h3>
+            S'exprimer
+          </h3>
 
           <p>
-            Encourager les jeunes à proposer des idées
-            et à participer aux initiatives de leur communauté.
+            Partager ses idées, ses projets et ses propositions
+            pour améliorer sa communauté.
           </p>
 
         </div>
@@ -459,13 +700,17 @@
 
         <div class="card">
 
-          <div class="card-icon">🤝</div>
+          <div class="card-icon">
+            🤝
+          </div>
 
-          <h3>Notre engagement</h3>
+          <h3>
+            Participer
+          </h3>
 
           <p>
-            Favoriser la solidarité, le respect,
-            la responsabilité et la participation des adolescents.
+            Prendre part à des activités et initiatives
+            destinées aux adolescents.
           </p>
 
         </div>
@@ -475,15 +720,19 @@
     </section>
 
 
-    <!-- DROITS -->
-    <section id="droits" class="about">
+    <!-- ================= DOMAINES ================= -->
 
-      <div class="section-title">
+    <section class="section" style="background:#f4faf6;">
 
-        <h2>Droits & Devoirs</h2>
+      <div class="section-header">
+
+        <h2>
+          Explorez le CDA
+        </h2>
 
         <p>
-          Comprendre ses droits et ses responsabilités.
+          Découvrez les différents espaces disponibles
+          sur notre plateforme.
         </p>
 
       </div>
@@ -493,13 +742,17 @@
 
         <div class="card">
 
-          <div class="card-icon">⚖️</div>
+          <div class="card-icon">
+            👥
+          </div>
 
-          <h3>Les droits</h3>
+          <h3>
+            Le CDA
+          </h3>
 
           <p>
-            Découvrir les principaux droits des enfants
-            et des adolescents.
+            Découvrez notre mission, nos objectifs
+            et notre fonctionnement.
           </p>
 
         </div>
@@ -507,13 +760,17 @@
 
         <div class="card">
 
-          <div class="card-icon">🌍</div>
+          <div class="card-icon">
+            ⚖️
+          </div>
 
-          <h3>Les responsabilités</h3>
+          <h3>
+            Droits & Devoirs
+          </h3>
 
           <p>
-            Comprendre comment chaque adolescent peut
-            contribuer positivement à sa communauté.
+            Apprenez à connaître vos droits
+            et vos responsabilités.
           </p>
 
         </div>
@@ -521,13 +778,17 @@
 
         <div class="card">
 
-          <div class="card-icon">🌳</div>
+          <div class="card-icon">
+            📰
+          </div>
 
-          <h3>Environnement</h3>
+          <h3>
+            Activités
+          </h3>
 
           <p>
-            Apprendre à protéger notre environnement
-            et notre cadre de vie.
+            Retrouvez les activités, projets
+            et événements du CDA.
           </p>
 
         </div>
@@ -537,157 +798,94 @@
     </section>
 
 
-    <!-- ACTIVITES -->
-    <section id="activites">
+    <!-- ================= CTA ================= -->
 
-      <div class="section-title">
+    <section class="cta">
 
-        <h2>Activités du CDA</h2>
+      <h2>
+        Ta voix compte.
+      </h2>
 
-        <p>
-          Découvrir les activités et initiatives des adolescents.
-        </p>
+      <p>
+        Informe-toi, participe et contribue
+        au développement de ta communauté.
+      </p>
 
-      </div>
-
-
-      <div class="cards">
-
-        <div class="card">
-
-          <div class="card-icon">📚</div>
-
-          <h3>Formations</h3>
-
-          <p>
-            Des activités éducatives pour développer
-            les connaissances et les compétences.
-          </p>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-icon">🌱</div>
-
-          <h3>Actions communautaires</h3>
-
-          <p>
-            Des initiatives réalisées par les adolescents
-            pour leur communauté.
-          </p>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-icon">🎤</div>
-
-          <h3>Expression</h3>
-
-          <p>
-            Un espace pour partager ses idées,
-            ses projets et ses expériences.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- QUIZ -->
-    <section id="quiz" class="about">
-
-      <div class="section-title">
-
-        <h2>Quiz & Participation</h2>
-
-        <p>
-          Apprendre tout en participant.
-        </p>
-
-      </div>
-
-
-      <div class="about-content">
-
-        <p>
-          Bientôt, les adolescents pourront participer
-          à des quiz sur les droits, les devoirs,
-          la citoyenneté et l'environnement,
-          gagner des points et suivre leur progression.
-        </p>
-
-        <br>
-
-        <a href="#accueil" class="btn-primary">
-          Commencer bientôt
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- A PROPOS -->
-    <section id="apropos">
-
-      <div class="section-title">
-
-        <h2>À propos du CDA</h2>
-
-      </div>
-
-      <div class="about-content">
-
-        <p>
-          Le <strong>CDA — Conseil de Développement des Adolescents</strong>
-          est une initiative destinée à favoriser la participation,
-          l'éducation et le développement des adolescents.
-          Cette plateforme a pour objectif de mettre à leur disposition
-          des informations, des activités et des outils pour apprendre,
-          s'exprimer et agir positivement.
-        </p>
-
-      </div>
+      <a href="cda.html">
+        Rejoindre le mouvement
+      </a>
 
     </section>
 
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- ================= FOOTER ================= -->
+
   <footer>
 
-    <h3>CDA</h3>
+    <div class="footer-content">
 
-    <p>
-      Conseil de Développement des Adolescents
-    </p>
+      <div>
 
-    <p>
-      Ensemble pour une jeunesse engagée.
-    </p>
+        <h3>CDA</h3>
+
+        <p>
+          Conseil de Développement des Adolescents.
+          Une plateforme dédiée à l'information,
+          à la participation et au développement
+          des adolescents.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>Navigation</h3>
+
+        <a href="index.html">Accueil</a>
+
+        <a href="cda.html">Le CDA</a>
+
+        <a href="droits.html">Droits & Devoirs</a>
+
+        <a href="activites.html">Activités</a>
+
+      </div>
+
+
+      <div>
+
+        <h3>Plateforme</h3>
+
+        <a href="quiz.html">Quiz</a>
+
+        <a href="recherche.html">Recherche</a>
+
+        <a href="apropos.html">À propos</a>
+
+      </div>
+
+    </div>
+
 
     <div class="copyright">
-      © 2026 CDA — Tous droits réservés.
+
+      © 2026 CDA — Conseil de Développement des Adolescents
+
     </div>
 
   </footer>
 
 
-  <!-- JAVASCRIPT -->
   <script>
 
     function toggleMenu() {
 
-      const navigation = document.getElementById("navigation");
+      const menu = document.getElementById("menu");
 
-      navigation.classList.toggle("active");
+      menu.classList.toggle("active");
 
     }
 
