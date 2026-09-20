@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Assistant IA | CDA</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5faf7;
+    color: #173b2b;
+}
+
+/* HEADER */
+
+header {
+    background: white;
+    border-bottom: 1px solid #e2eee7;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #087f45;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.logo-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #0a8f4d;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #345447;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav a:hover,
+nav a.active {
+    color: #078944;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #078944;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* PAGE HEADER */
+
+.page-header {
+    background: linear-gradient(135deg, #087f45, #0eaa5b);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.page-header h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.page-header p {
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.7;
+}
+
+/* ASSISTANT */
+
+.assistant-section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.assistant-box {
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* ASSISTANT TOP */
+
+.assistant-top {
+    background: #087f45;
+    color: white;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ai-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: white;
+    color: #087f45;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+}
+
+.assistant-top h2 {
+    margin-bottom: 5px;
+}
+
+.assistant-top p {
+    opacity: 0.9;
+}
+
+/* CHAT */
+
+.chat {
+    height: 450px;
+    overflow-y: auto;
+    padding: 25px;
+    background: #f8fcfa;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 18px;
+}
+
+.message.ai {
+    justify-content: flex-start;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message-content {
+    max-width: 75%;
+    padding: 14px 17px;
+    border-radius: 15px;
+    line-height: 1.6;
+}
+
+.message.ai .message-content {
+    background: white;
+    border: 1px solid #dceae2;
+}
+
+.message.user .message-content {
+    background: #0a964e;
+    color: white;
+}
+
+/* SUGGESTIONS */
+
+.suggestions {
+    padding: 20px 25px;
+    border-top: 1px solid #e2eee7;
+    background: white;
+}
+
+.suggestions p {
+    color: #60756b;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.suggestion-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.suggestion {
+    border: 1px solid #bfe0ca;
+    background: #edf9f1;
+    color: #087f45;
+    border-radius: 25px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.suggestion:hover {
+    background: #dff3e6;
+}
+
+/* INPUT */
+
+.input-area {
+    padding: 20px;
+    border-top: 1px solid #e2eee7;
+    display: flex;
+    gap: 12px;
+    background: white;
+}
+
+.input-area input {
+    flex: 1;
+    border: 2px solid #dceae2;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-area input:focus {
+    border-color: #0a964e;
+}
+
+.send-btn {
+    border: none;
+    background: #0a964e;
+    color: white;
+    padding: 0 25px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.send-btn:hover {
+    background: #06763c;
+}
+
+/* INFO */
+
+.info {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+.info-box {
+    background: #eaf7ef;
+    border-left: 5px solid #0a964e;
+    padding: 22px;
+    border-radius: 10px;
+}
+
+.info-box h3 {
+    color: #087f45;
+    margin-bottom: 10px;
+}
+
+.info-box p {
+    color: #526a5e;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+
+footer {
+    background: #073d25;
+    color: white;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+}
+
+.footer-content h3 {
+    margin-bottom: 15px;
+}
+
+.footer-content p {
+    color: #c7ddd1;
+    line-height: 1.7;
+}
+
+.footer-content a {
+    display: block;
+    color: #c7ddd1;
+    text-decoration: none;
+    margin-bottom: 9px;
+}
+
+.footer-content a:hover {
+    color: white;
+}
+
+.copyright {
+    text-align: center;
+    padding: 18px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    color: #bdd5c8;
+}
+
+/* MOBILE */
+
+@media(max-width: 850px) {
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .message-content {
+        max-width: 90%;
+    }
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    .send-btn {
+        padding: 15px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="navbar">
+
+<a href="index.html" class="logo">
+    <span class="logo-circle">CDA</span>
+    Conseil des Adolescents
+</a>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<nav id="nav">
+
+<a href="index.html">Accueil</a>
+<a href="cda.html">Le CDA</a>
+<a href="droits.html">Droits & Devoirs</a>
+<a href="activites.html">Activités</a>
+<a href="quiz.html">Quiz</a>
+<a href="recherche.html">Recherche</a>
+<a href="assistant.html" class="active">Assistant IA</a>
+<a href="apropos.html">À propos</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<section class="page-header">
+
+<h1>🤖 Assistant CDA</h1>
+
+<p>
+Pose tes questions et découvre des informations
+simples sur les droits, les devoirs et la participation
+des adolescents.
+</p>
+
+</section>
+
+
+<section class="assistant-section">
+
+<div class="assistant-box">
+
+<div class="assistant-top">
+
+<div class="ai-icon">
+🤖
+</div>
+
+<div>
+
+<h2>Assistant CDA</h2>
+
+<p>Assistant d'information</p>
+
+</div>
+
+</div>
+
+
+<div class="chat" id="chat">
+
+<div class="message ai">
+
+<div class="message-content">
+
+<strong>Assistant CDA 🤖</strong><br><br>
+
+Bonjour ! 👋<br>
+
+Je suis l'Assistant CDA.<br><br>
+
+Tu peux me poser une question sur les droits,
+les devoirs, l'environnement, la citoyenneté
+ou la participation des adolescents.
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="suggestions">
+
+<p>💡 Questions rapides :</p>
+
+<div class="suggestion-buttons">
+
+<button class="suggestion"
+onclick="askQuestion('Quels sont les droits des adolescents ?')">
+Quels sont mes droits ?
+</button>
+
+<button class="suggestion"
+onclick="askQuestion('Quels sont les devoirs des adolescents ?')">
+Quels sont mes devoirs ?
+</button>
+
+<button class="suggestion"
+onclick="askQuestion('Comment protéger l’environnement ?')">
+Protéger l'environnement
+</button>
+
+<button class="suggestion"
+onclick="askQuestion('Que signifie être citoyen ?')">
+La citoyenneté
+</button>
+
+</div>
+
+</div>
+
+
+<div class="input-area">
+
+<input
+type="text"
+id="userInput"
+placeholder="Écris ta question ici..."
+onkeydown="handleEnter(event)"
+>
+
+<button class="send-btn" onclick="sendMessage()">
+Envoyer
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="info">
+
+<div class="info-box">
+
+<h3>ℹ️ Information importante</h3>
+
+<p>
+L'Assistant CDA est conçu pour fournir des informations
+éducatives. Pour une situation urgente ou un problème
+grave, il faut également rechercher l'aide d'un adulte
+de confiance ou d'un professionnel compétent.
+</p>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="footer-content">
+
+<div>
+
+<h3>CDA</h3>
+
+<p>
+Conseil de Développement des Adolescents.
+Une plateforme destinée à informer,
+écouter et encourager la participation des adolescents.
+</p>
+
+</div>
+
+<div>
+
+<h3>Navigation</h3>
+
+<a href="index.html">Accueil</a>
+<a href="cda.html">Le CDA</a>
+<a href="droits.html">Droits & Devoirs</a>
+<a href="activites.html">Activités</a>
+
+</div>
+
+<div>
+
+<h3>Découvrir</h3>
+
+<a href="quiz.html">Quiz</a>
+<a href="recherche.html">Recherche</a>
+<a href="assistant.html">Assistant IA</a>
+<a href="apropos.html">À propos</a>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+© 2026 CDA — Conseil de Développement des Adolescents
+
+</div>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    document.getElementById("nav").classList.toggle("show");
+
+}
+
+
+function addMessage(text, type) {
+
+    const chat = document.getElementById("chat");
+
+    const message = document.createElement("div");
+
+    message.className = "message " + type;
+
+    const content = document.createElement("div");
+
+    content.className = "message-content";
+
+    content.innerHTML = text;
+
+    message.appendChild(content);
+
+    chat.appendChild(message);
+
+    chat.scrollTop = chat.scrollHeight;
+
+}
+
+
+function sendMessage() {
+
+    const input = document.getElementById("userInput");
+
+    const question = input.value.trim();
+
+    if (question === "") {
+        return;
+    }
+
+    addMessage(question, "user");
+
+    input.value = "";
+
+    /*
+       Pour le moment, ceci est seulement
+       l'écran de démonstration.
+       L'IA réelle sera connectée plus tard.
+    */
+
+    setTimeout(function() {
+
+        addMessage(
+            "Merci pour ta question ! 🤖<br><br>" +
+            "L'intelligence artificielle du CDA sera connectée " +
+            "à cette conversation dans la prochaine étape.",
+            "ai"
+        );
+
+    }, 600);
+
+}
+
+
+function askQuestion(question) {
+
+    document.getElementById("userInput").value = question;
+
+    sendMessage();
+
+}
+
+
+function handleEnter(event) {
+
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+
+}
+
+</script>
+
+</body>
+</html>
