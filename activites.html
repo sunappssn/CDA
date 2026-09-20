@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Activités | CDA</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #173b29;
+    }
+
+    header {
+      height: 78px;
+      background: white;
+      border-bottom: 1px solid #e5eee8;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 6%;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+
+      background: #07883f;
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .logo-text strong {
+      display: block;
+      color: #07883f;
+      font-size: 20px;
+    }
+
+    .logo-text span {
+      font-size: 10px;
+      color: #68776e;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #254333;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #07883f;
+    }
+
+    .menu-button {
+      display: none;
+      font-size: 28px;
+      color: #07883f;
+      cursor: pointer;
+    }
+
+    /* PAGE HEADER */
+
+    .page-header {
+      background: #f1faf4;
+      padding: 80px 7%;
+      text-align: center;
+    }
+
+    .label {
+      display: inline-block;
+
+      background: #dff4e7;
+      color: #07883f;
+
+      padding: 9px 17px;
+      border-radius: 30px;
+
+      font-size: 13px;
+      font-weight: bold;
+
+      margin-bottom: 20px;
+    }
+
+    .page-header h1 {
+      color: #075d30;
+      font-size: 48px;
+      margin-bottom: 18px;
+    }
+
+    .page-header p {
+      max-width: 750px;
+      margin: auto;
+
+      color: #617067;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* CONTAINER */
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 80px 25px;
+    }
+
+    /* SECTION TITLE */
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      color: #075d30;
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #68756d;
+    }
+
+    /* FEATURED */
+
+    .featured {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+
+      gap: 35px;
+
+      margin-bottom: 80px;
+    }
+
+    .featured-image {
+      min-height: 330px;
+
+      border-radius: 25px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #07883f,
+          #075d30
+        );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: white;
+
+      font-size: 80px;
+    }
+
+    .featured-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-content .tag {
+      color: #07883f;
+      font-size: 13px;
+      font-weight: bold;
+
+      margin-bottom: 15px;
+    }
+
+    .featured-content h2 {
+      color: #075d30;
+      font-size: 34px;
+
+      margin-bottom: 18px;
+    }
+
+    .featured-content p {
+      color: #65736b;
+      line-height: 1.8;
+
+      margin-bottom: 20px;
+    }
+
+    .date {
+      color: #07883f;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* ACTIVITY CARDS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 25px;
+
+      margin-bottom: 80px;
+    }
+
+    .card {
+      background: white;
+
+      border: 1px solid #e2eee6;
+      border-radius: 20px;
+
+      overflow: hidden;
+
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+
+      box-shadow:
+        0 15px 35px rgba(0,0,0,0.08);
+    }
+
+    .card-top {
+      height: 180px;
+
+      background: #e1f5e9;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 55px;
+    }
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .card-content .category {
+      color: #07883f;
+      font-size: 12px;
+      font-weight: bold;
+
+      margin-bottom: 10px;
+    }
+
+    .card-content h3 {
+      color: #075d30;
+      font-size: 20px;
+
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      color: #68756d;
+      line-height: 1.6;
+
+      font-size: 14px;
+
+      margin-bottom: 15px;
+    }
+
+    /* CALENDAR */
+
+    .calendar {
+      background: #f3faf5;
+
+      border-radius: 25px;
+
+      padding: 45px;
+
+      margin-bottom: 80px;
+    }
+
+    .event {
+      background: white;
+
+      border: 1px solid #e2eee6;
+
+      border-radius: 15px;
+
+      padding: 20px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 20px;
+
+      margin-bottom: 15px;
+    }
+
+    .event:last-child {
+      margin-bottom: 0;
+    }
+
+    .event-date {
+      width: 65px;
+      min-width: 65px;
+      height: 65px;
+
+      border-radius: 12px;
+
+      background: #07883f;
+      color: white;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .event-date strong {
+      font-size: 20px;
+    }
+
+    .event-date span {
+      font-size: 11px;
+    }
+
+    .event-info h3 {
+      color: #075d30;
+      margin-bottom: 5px;
+    }
+
+    .event-info p {
+      color: #68756d;
+      font-size: 14px;
+    }
+
+    /* CTA */
+
+    .cta {
+      background: #07883f;
+
+      color: white;
+
+      border-radius: 25px;
+
+      padding: 55px 30px;
+
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 34px;
+
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 700px;
+
+      margin: auto auto 25px;
+
+      color: #e6f8ed;
+
+      line-height: 1.7;
+    }
+
+    .cta a {
+      display: inline-block;
+
+      background: white;
+      color: #07883f;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+      padding: 13px 25px;
+
+      border-radius: 8px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 80px;
+
+      background: #064d29;
+
+      color: white;
+
+      padding: 40px 7% 25px;
+
+      text-align: center;
+    }
+
+    footer h3 {
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      color: #d5ecdd;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.15);
+
+      margin-top: 25px;
+
+      padding-top: 20px;
+
+      color: #c9e4d2;
+
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+
+      nav {
+        display: none;
+
+        position: absolute;
+
+        top: 78px;
+        left: 0;
+
+        width: 100%;
+
+        background: white;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 25px 7%;
+
+        box-shadow:
+          0 10px 25px rgba(0,0,0,0.08);
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .featured {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .calendar {
+        padding: 25px;
+      }
+
+      .page-header h1 {
+        font-size: 38px;
+      }
+
+      .event {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+  <a href="index.html" class="logo">
+
+    <div class="logo-circle">
+      CDA
+    </div>
+
+    <div class="logo-text">
+      <strong>CDA</strong>
+      <span>
+        Conseil de Développement des Adolescents
+      </span>
+    </div>
+
+  </a>
+
+  <nav id="menu">
+
+    <a href="index.html">
+      Accueil
+    </a>
+
+    <a href="cda.html">
+      Le CDA
+    </a>
+
+    <a href="droits.html">
+      Droits & Devoirs
+    </a>
+
+    <a href="activites.html" class="active">
+      Activités
+    </a>
+
+    <a href="quiz.html">
+      Quiz
+    </a>
+
+    <a href="recherche.html">
+      Recherche
+    </a>
+
+    <a href="apropos.html">
+      À propos
+    </a>
+
+  </nav>
+
+  <div
+    class="menu-button"
+    onclick="toggleMenu()"
+  >
+    ☰
+  </div>
+
+</header>
+
+
+<!-- PAGE HEADER -->
+
+<section class="page-header">
+
+  <div class="label">
+    CDA • ACTIVITÉS
+  </div>
+
+  <h1>
+    Nos activités
+  </h1>
+
+  <p>
+    Découvrez les activités, projets, événements et
+    initiatives réalisés avec et pour les adolescents.
+  </p>
+
+</section>
+
+
+<main class="container">
+
+
+  <!-- ACTIVITÉ À LA UNE -->
+
+  <div class="section-title">
+
+    <h2>
+      À la une
+    </h2>
+
+    <p>
+      Découvrez une activité mise en avant par le CDA.
+    </p>
+
+  </div>
+
+
+  <section class="featured">
+
+    <div class="featured-image">
+      👥
+    </div>
+
+    <div class="featured-content">
+
+      <div class="tag">
+        ACTIVITÉ CDA
+      </div>
+
+      <h2>
+        Les adolescents au cœur de l'action
+      </h2>
+
+      <p>
+        Le CDA encourage les adolescents à participer
+        à des activités éducatives, citoyennes,
+        environnementales et communautaires.
+      </p>
+
+      <div class="date">
+        📅 Activités et événements à venir
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOS ACTIVITÉS -->
+
+  <div class="section-title">
+
+    <h2>
+      Nos domaines d'activités
+    </h2>
+
+    <p>
+      Des activités pour apprendre, participer et agir.
+    </p>
+
+  </div>
+
+
+  <section class="cards">
+
+
+    <article class="card">
+
+      <div class="card-top">
+        📚
+      </div>
+
+      <div class="card-content">
+
+        <div class="category">
+          ÉDUCATION
+        </div>
+
+        <h3>
+          Ateliers éducatifs
+        </h3>
+
+        <p>
+          Des ateliers permettant aux adolescents
+          d'acquérir de nouvelles connaissances
+          et compétences.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="card-top">
+        🌳
+      </div>
+
+      <div class="card-content">
+
+        <div class="category">
+          ENVIRONNEMENT
+        </div>
+
+        <h3>
+          Actions environnementales
+        </h3>
+
+        <p>
+          Des initiatives pour sensibiliser les jeunes
+          à la protection de l'environnement.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="card-top">
+        🗣️
+      </div>
+
+      <div class="card-content">
+
+        <div class="category">
+          EXPRESSION
+        </div>
+
+        <h3>
+          Espaces de parole
+        </h3>
+
+        <p>
+          Des moments d'échange permettant aux adolescents
+          de partager leurs idées et leurs expériences.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="card-top">
+        🤝
+      </div>
+
+      <div class="card-content">
+
+        <div class="category">
+          CITOYENNETÉ
+        </div>
+
+        <h3>
+          Actions citoyennes
+        </h3>
+
+        <p>
+          Des activités favorisant la participation
+          et l'engagement dans la communauté.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="card-top">
+        ⚽
+      </div>
+
+      <div class="card-content">
+
+        <div class="category">
+          LOISIRS
+        </div>
+
+        <h3>
+          Activités sportives
+        </h3>
+
+        <p>
+          Des activités sportives et de loisirs
+          favorisant la cohésion et le bien-être.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="card-top">
+        🎤
+      </div>
+
+      <div class="card-content">
+
+        <div class="category">
+          CULTURE
+        </div>
+
+        <h3>
+          Expression culturelle
+        </h3>
+
+        <p>
+          Des espaces permettant aux adolescents
+          de valoriser leurs talents et leur créativité.
+        </p>
+
+      </div>
+
+    </article>
+
+  </section>
+
+
+  <!-- CALENDRIER -->
+
+  <div class="section-title">
+
+    <h2>
+      Calendrier
+    </h2>
+
+    <p>
+      Retrouvez les prochaines activités du CDA.
+    </p>
+
+  </div>
+
+
+  <section class="calendar">
+
+    <div class="event">
+
+      <div class="event-date">
+
+        <strong>01</strong>
+
+        <span>À VENIR</span>
+
+      </div>
+
+      <div class="event-info">
+
+        <h3>
+          Rencontre des adolescents
+        </h3>
+
+        <p>
+          Rencontre, échanges et partage d'idées.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="event">
+
+      <div class="event-date">
+
+        <strong>02</strong>
+
+        <span>À VENIR</span>
+
+      </div>
+
+      <div class="event-info">
+
+        <h3>
+          Atelier droits & responsabilités
+        </h3>
+
+        <p>
+          Sensibilisation aux droits et responsabilités
+          des adolescents.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="event">
+
+      <div class="event-date">
+
+        <strong>03</strong>
+
+        <span>À VENIR</span>
+
+      </div>
+
+      <div class="event-info">
+
+        <h3>
+          Journée environnement
+        </h3>
+
+        <p>
+          Une activité consacrée à la protection
+          de notre environnement.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <h2>
+      Une idée pour le CDA ?
+    </h2>
+
+    <p>
+      Les adolescents peuvent contribuer en proposant
+      des idées, des projets et des activités.
+    </p>
+
+    <a href="apropos.html">
+      En savoir plus
+    </a>
+
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <h3>
+    CDA
+  </h3>
+
+  <p>
+    Conseil de Développement des Adolescents
+  </p>
+
+  <p>
+    Ensemble pour une jeunesse engagée.
+  </p>
+
+  <div class="copyright">
+    © 2026 CDA — Tous droits réservés.
+  </div>
+
+</footer>
+
+
+<script>
+
+  function toggleMenu() {
+
+    const menu =
+      document.getElementById("menu");
+
+    menu.classList.toggle("active");
+
+  }
+
+</script>
+
+</body>
+</html>
